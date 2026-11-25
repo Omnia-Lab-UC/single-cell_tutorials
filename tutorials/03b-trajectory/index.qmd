@@ -421,6 +421,10 @@ nothing to compare against. To go further you would:
 
 There is no guarantee of a difference, and a null result is a real finding. This
 is a research question, not an exercise with an answer key.
+
+Whatever you compare, pathology grade belongs to the donor, not to the cell. Read
+the warning about comparing groups in the `tradeSeq` note below before you test
+anything across donors.
 :::
 
 ::: {.callout-note title="Optional — a principled gene test with `tradeSeq`"}
@@ -430,6 +434,22 @@ The Spearman correlation in Step 9 is a fast first pass. The purpose-built tool,
 significant change, which also handles non-monotone patterns and branches.
 It is heavier to run; reach for it once you trust the trajectory and want
 statistics on the gene dynamics.
+
+**Cost.** `fitGAM()` fits a model per gene across every cell. On this tutorial's
+single donor and lineage that is manageable; on a cohort it is not. A student in
+the lab who fitted 1,500 genes on microglia from the full PFC cohort waited about
+nine hours for one model. Start with a few dozen genes and a subsample of cells,
+and scale up only once the model is the one you want.
+
+**Comparing groups.** `tradeSeq` can test whether a gene's pattern along
+pseudotime differs between conditions, but it treats each cell as an independent
+sample. If the condition belongs to the donor (sex, pathology grade, age), that
+is the pseudoreplication trap from
+[03a, Step 2](../03a-pseudobulk/index.qmd#sec-pseudoreplication): thousands of
+cells from a handful of donors make a difference look far more certain than it
+is. For donor-level questions, make the donor the unit. One way is to split
+pseudotime into a few bins, sum counts per donor within each bin, and test with
+the approach in [tutorial 04](../04-pseudobulk-de/index.qmd).
 :::
 
 ## What you produced
