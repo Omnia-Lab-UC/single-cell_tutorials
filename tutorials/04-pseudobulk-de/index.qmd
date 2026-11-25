@@ -382,6 +382,30 @@ There is no answer key. A defensible null, clearly reported, is a complete
 result.
 :::
 
+::: {.callout-tip title="Optional / advanced — if your contrast is sex"}
+Testing male against female donors will always return hits, because some genes
+sit on only one sex chromosome. Expect Y-linked genes (`UTY`, `DDX3Y`, `KDM5D`)
+on one side, and `XIST` and other genes that escape X-inactivation on the other.
+Use them as a check: if they are missing or point the wrong way, your sex labels
+or your design are wrong.
+
+They are not your finding. Before interpreting anything, set the X, Y, and
+pseudoautosomal genes aside and look at what remains:
+
+- **How many autosomal genes are left?** That number, not the total, is the size
+  of your result.
+- **Do they belong in this cell type?** A gene that is a marker of a different
+  cell type, at low expression, may have leaked in from ambient RNA or from a few
+  mislabeled nuclei. How would you tell?
+- **Is it the group or a few donors?** Plot the pseudobulk values of the top
+  genes per donor. A shift across all donors of one sex and three extreme donors
+  give the same p-value and mean different things.
+
+If you go on to pathway enrichment, run it on the autosomal list, and count how
+many genes support each enriched term. A hundred enriched terms carried by the
+same four genes is one observation, not a hundred.
+:::
+
 ## What you produced
 
 - A full pseudobulk DE analysis for one cell type: contrast, design with a

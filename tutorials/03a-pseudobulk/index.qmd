@@ -73,7 +73,7 @@ BiocManager::install(c("SingleCellExperiment", "scuttle"))
 If you are on the Nix dev shell, these are already built, so you do not need to run
 `install.packages`.
 
-## Step 2 — Why pseudobulk? The pseudoreplication trap
+## Step 2 — Why pseudobulk? The pseudoreplication trap {#sec-pseudoreplication}
 
 Imagine two groups of donors (low pathology and high pathology) and suppose you
 have 5,000 astrocytes from each group. A per-cell test (a *t*-test or a
